@@ -103,7 +103,10 @@ SELECT * FROM Students WHERE age BETWEEN 18 AND 25;
 SELECT * FROM Students WHERE id IN (12, 13);
 
 -- Thống kê số lượng học viên của mỗi lớp
-SELECT classes_id, COUNT(*) AS số_lượng_học_viên FROM Students GROUP BY classes_id;
+SELECT c.name AS tên_lớp, COUNT(*) AS số_lượng_học_viên 
+FROM Students s
+JOIN Classes c ON s.classes_id = c.id
+GROUP BY s.classes_id;
 
 -- Thống kê số lượng học viên tại các tỉnh
 SELECT a.address, COUNT(*) AS số_lượng_học_viên
